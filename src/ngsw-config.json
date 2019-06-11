@@ -36,16 +36,5 @@
       "maxAge": "5m",
       "timeout": "30s"
     }
-  },
-  {
-    "name": "api-performance",
-    "urls": [
-      "/data/pricehistorical"
-    ],
-    "cacheConfig": {
-      "strategy": "performance",
-      "maxSize": 500,
-      "maxAge": "1d"
-    }
   }]
 }

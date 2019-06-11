@@ -16,6 +16,6 @@ export class HomeService {
   }
 
   getHistoryByFSymbol(fsym, date): Observable<any> {
-    return this.httpClient.get(`${this.settings.apiUrl}/pricehistorical?fsym=${fsym}&tsyms=USD&limit=5&ts=${date}&api_key=${this.settings.apiKey}`);
+    return this.httpClient.get(`${this.settings.apiUrl}/pricehistorical?fsym=${fsym}&tsyms=USD&ts=${date}&api_key=${this.settings.apiKey}`);
   }
 }

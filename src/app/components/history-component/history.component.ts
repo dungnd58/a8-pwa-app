@@ -14,10 +14,10 @@ export class HistoryComponent implements OnInit {
 
   ngOnInit() {
     this.getTodayPrice();
-    this.getYesterdayPrice();
-    this.getTwoDaysPrice();
-    this.getThreeDaysPrice();
-    this.getFourDaysPrice();
+    // this.getYesterdayPrice();
+    // this.getTwoDaysPrice();
+    // this.getThreeDaysPrice();
+    // this.getFourDaysPrice();
   }
 
   private getSymbolHistory(fsym,date) {
