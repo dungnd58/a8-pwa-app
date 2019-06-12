@@ -13,11 +13,21 @@ export class TodayComponent implements OnInit {
 
   ngOnInit() {
     this.getPriceMulti();
+    this.getWeatherTest();
   }
 
   getPriceMulti() {
     this.homeService.getPriceMulti().subscribe((data) => {
       this.priceMulti = data;
+    },
+    (error) => {
+      console.log(error);
+    });
+  }
+
+  getWeatherTest() {
+    this.homeService.getWeatherApiTest().subscribe((data) => {
+      console.log(data);
     },
     (error) => {
       console.log(error);

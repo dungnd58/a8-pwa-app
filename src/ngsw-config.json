@@ -25,16 +25,30 @@
       }
     }
   ],
-  "dataGroups": [{
-    "name": "api-freshness",
-    "urls": [
-      "/data/pricemulti"
-    ],
-    "cacheConfig": {
-      "strategy": "freshness",
-      "maxSize": 100,
-      "maxAge": "5m",
-      "timeout": "30s"
+  "dataGroups": [
+    {
+      "name": "api-perfomance",
+      "urls": [
+        "/**/social/coin/**",
+        "/data/pricehistorical"
+      ],
+      "cacheConfig": {
+        "strategy": "performance",
+        "maxAge": "1d",
+        "maxSize": 500
+      }
+    },
+    {
+      "name": "api-pricemulti-2",
+      "urls": [
+        "/data/pricemulti"
+      ],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxAge": "5m",
+        "maxSize": 100,
+        "timeout": "10s"
+      }
     }
-  }]
+  ]
 }

@@ -14,10 +14,10 @@ export class HistoryComponent implements OnInit {
 
   ngOnInit() {
     this.getTodayPrice();
-    // this.getYesterdayPrice();
-    // this.getTwoDaysPrice();
-    // this.getThreeDaysPrice();
-    // this.getFourDaysPrice();
+    this.getYesterdayPrice();
+    this.getTwoDaysPrice();
+    this.getThreeDaysPrice();
+    this.getFourDaysPrice();
   }
 
   private getSymbolHistory(fsym,date) {
@@ -40,27 +40,27 @@ export class HistoryComponent implements OnInit {
   }
 
   getTodayPrice() {
-    let t = moment().unix();
+    let t = moment().startOf('day').unix();
     this.saveHistory(t);
   }
 
   getYesterdayPrice() {
-    let t = moment().subtract(1,'days').unix();
+    let t = moment().startOf('day').subtract(1,'days').unix();
     this.saveHistory(t);
   }
 
   getTwoDaysPrice() {
-    let t = moment().subtract(2,'days').unix();
+    let t = moment().startOf('day').subtract(2,'days').unix();
     this.saveHistory(t);
   }
 
   getThreeDaysPrice() {
-    let t = moment().subtract(3,'days').unix()
+    let t = moment().startOf('day').subtract(3,'days').unix()
     this.saveHistory(t);
   }
 
   getFourDaysPrice() {
-    let t = moment().subtract(4,'days').unix()
+    let t = moment().startOf('day').subtract(4,'days').unix()
     this.saveHistory(t);
   }
 }

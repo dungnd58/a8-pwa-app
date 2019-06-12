@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SettingsService } from './settings.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -17,5 +17,9 @@ export class HomeService {
 
   getHistoryByFSymbol(fsym, date): Observable<any> {
     return this.httpClient.get(`${this.settings.apiUrl}/pricehistorical?fsym=${fsym}&tsyms=USD&ts=${date}&api_key=${this.settings.apiKey}`);
+  }
+
+  getWeatherApiTest(): Observable<any> {
+    return this.httpClient.get(`${this.settings.apiUrl}/social/coin/latest?api_key=${this.settings.apiKey}`);
   }
 }
