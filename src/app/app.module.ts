@@ -11,6 +11,7 @@ import { TodayComponent } from './components/today-component/today.component';
 import { HistoryComponent } from './components/history-component/history.component';
 import { SettingsService } from './services/settings.service';
 import { RouterModule } from '@angular/router';
+import { PWAService } from './services/pwa.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { RouterModule } from '@angular/router';
     RouterModule
   ],
   providers: [
-    SettingsService
+    SettingsService,
+    PWAService
   ],
   bootstrap: [AppComponent]
 })

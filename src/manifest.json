@@ -1,6 +1,6 @@
 {
-  "name": "a8-pwa-app",
-  "short_name": "a8-pwa-app",
+  "name": "Angular 8 PWA app",
+  "short_name": "Angular 8 PWA",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",

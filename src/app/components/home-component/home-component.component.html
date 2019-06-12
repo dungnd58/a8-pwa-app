@@ -5,7 +5,9 @@
                 <span class="navbar-item">PusherCoins</span>
             </div>
             <div class="navbar-end">
-                <a class="navbar-item" href="https://pusher.com" target="_blank" rel="noopener noreferrer">Pusher.com</a>
+                <button class="install-btn" *ngIf="pwaService.promptEvent" (click)="installApp()">
+                    Install
+                </button>
             </div>
         </nav>
     </header>
