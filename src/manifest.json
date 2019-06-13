@@ -7,6 +7,7 @@
   "scope": "/",
   "start_url": "/",
   "description": "This is my 1st Angular PWA",
+  "gcm_sender_id": "103953800507",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",

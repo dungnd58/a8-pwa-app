@@ -12,6 +12,7 @@ import { HistoryComponent } from './components/history-component/history.compone
 import { SettingsService } from './services/settings.service';
 import { RouterModule } from '@angular/router';
 import { PWAService } from './services/pwa.service';
+import { NewsLetterService } from './services/newsletter.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PWAService } from './services/pwa.service';
   ],
   providers: [
     SettingsService,
-    PWAService
+    PWAService,
+    NewsLetterService
   ],
   bootstrap: [AppComponent]
 })

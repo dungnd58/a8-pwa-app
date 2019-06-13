@@ -9,6 +9,7 @@ export class PWAService {
     set promptEvent(evt: any) {
         this._promptEvent = evt;
     }
+    pushSubscriber: any = null;
 
     constructor() {
         window.addEventListener('beforeinstallprompt', event => {

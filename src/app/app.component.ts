@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { SwUpdate } from '@angular/service-worker';
+import { SwUpdate, SwPush } from '@angular/service-worker';
+import { SettingsService } from './services/settings.service';
+import { NewsLetterService } from './services/newsletter.service';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,10 @@ import { SwUpdate } from '@angular/service-worker';
 export class AppComponent {
   title = 'a8-pwa-app';
 
-  constructor(private swUpdate: SwUpdate) {}
+  constructor(private swUpdate: SwUpdate,
+    private swPush: SwPush,
+    private newsletterService: NewsLetterService,
+    private settingsService: SettingsService) {}
 
   ngOnInit() {
     if (this.swUpdate.isEnabled) {
@@ -19,5 +24,21 @@ export class AppComponent {
         }
       });
     }
+
+    //Show choices popup
+    this.swPush.requestSubscription({
+      serverPublicKey: this.settingsService.publicKey
+    }) //return a push subscription object
+    .then(sub => {
+      this.newsletterService.addPushSubscriber(sub).subscribe(
+        () => {
+          console.log('Success');
+          this.newsletterService.send().subscribe();
+        }
+      )
+    })
+    .catch(err => console.log(err));
   }
+
+  
 }
