@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from 'src/app/services/home.service';
+import { IdbService } from 'src/app/services/idb.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-today',
@@ -9,7 +11,9 @@ import { HomeService } from 'src/app/services/home.service';
 export class TodayComponent implements OnInit {
   priceMulti: any;
 
-  constructor(private homeService: HomeService) { }
+  constructor(private homeService: HomeService,
+    private idbService: IdbService) {
+  }
 
   ngOnInit() {
     this.getPriceMulti();
@@ -17,12 +21,24 @@ export class TodayComponent implements OnInit {
   }
 
   getPriceMulti() {
-    this.homeService.getPriceMulti().subscribe((data) => {
-      this.priceMulti = data;
-    },
-    (error) => {
-      console.log(error);
-    });
+    this.idbService.getAllData('Today').then(items => {
+      if(this.idbService.networkMode === 'online' && items.length === 0) {
+        this.homeService.getPriceMulti().subscribe((data) => {
+          this.priceMulti = data;
+          this.idbService.addItems('Today',{
+            ...data,
+            date: moment().startOf('day').unix()
+          });
+        },
+        (error) => {
+          console.log(error);
+        });
+      } else {
+        this.priceMulti = items[0];
+      }
+    })
+
+    
   }
 
   // getWeatherTest() {
